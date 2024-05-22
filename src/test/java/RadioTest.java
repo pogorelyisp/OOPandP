@@ -167,6 +167,31 @@ public class RadioTest {
     }
 
 
+    @Test
+    public void setCurrentVolumeLowerMin() {    // 13. проверка установки громкости ниже нуля
+        Radio radio = new Radio();
+
+        //radio.setCurrentVolume(50);
+        radio.setCurrentVolume(-1);
+
+        int expected = 0 ;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setCurrentVolumeGreaterMax() {    // 14. проверка установки громкости выше нуля
+        Radio radio = new Radio();
+
+        //radio.setCurrentVolume(50);
+        radio.setCurrentVolume(101);
+
+        int expected = 0 ;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
 
 

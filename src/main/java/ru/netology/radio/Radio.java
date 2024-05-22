@@ -43,12 +43,12 @@ public class Radio {
 
     public void setCurrentVolume(int newCurrentVolume) {                 // Установка новой громкости
 
-//        if (currentVolume < 0) {
-//            return;
-//        }
-//        if (currentVolume > 100) {
-//            return;
-//        }
+        if (newCurrentVolume < 0) {
+            return;
+        }
+        if (newCurrentVolume > 100) {
+            return;
+        }
         currentVolume = newCurrentVolume;
     }
 
