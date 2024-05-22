@@ -141,6 +141,32 @@ public class RadioTest {
 
 
     }
+
+    @Test
+    public void setCurrentStationNegative() {   // 11. проверка текущей радиостанции, что она не может быть установлена меньше нуля
+        Radio radio = new Radio();
+
+        radio.setCurrentStation(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setCurrentStationAboveLimit() {   // 12. проверка текущей радиостанции, что она не может быть установлена выше девяти
+        Radio radio = new Radio();
+
+        radio.setCurrentStation(10);
+
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
 }
 
 
