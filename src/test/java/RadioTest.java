@@ -21,7 +21,7 @@ public class RadioTest {
     @Test
     public void switchNextStation() {      // 2. переключение радиостанции вверх
 
-        Radio radio = new Radio(9);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentStation(6);
         radio.setNextStation();
@@ -35,7 +35,7 @@ public class RadioTest {
 
     @Test
     public void switchPrevStation() {       // 3. переключение радиостанции вниз
-        Radio radio = new Radio(6);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentStation(6);
         radio.setPrevStation();
@@ -49,7 +49,7 @@ public class RadioTest {
 
     @Test
     public void switchNextStationMax() {      //  4. переключение радиостанции больше максимального
-        Radio radio = new Radio(9);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentStation(9);
         radio.setNextStation();
@@ -63,7 +63,7 @@ public class RadioTest {
 
     @Test
     public void switchPrevStationMin() {      //  5. переключение радиостанции меньше минимального
-        Radio radio = new Radio(0);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentStation(0);
         radio.setPrevStation();
@@ -75,7 +75,7 @@ public class RadioTest {
 
     @Test
     public void showCurrentVolume() {    // 6. показ текущей громкости
-        Radio radio = new Radio(50);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentVolume(50);
 
@@ -88,7 +88,7 @@ public class RadioTest {
 
     @Test
     public void switchNextVolume() {     // 7. переключение громкости вверх
-        Radio radio = new Radio(50);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentVolume(50);
         radio.setNextVolume();
@@ -102,7 +102,7 @@ public class RadioTest {
 
     @Test
     public void switchPrevVolume() {     // 8. переключение громкости вниз
-        Radio radio = new Radio(50);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentVolume(50);
         radio.setPrevVolume();
@@ -116,7 +116,7 @@ public class RadioTest {
 
     @Test
     public void switchPrevVolumeMin() {   // 9. переключение громкости ниже нуля
-        Radio radio = new Radio(0);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentVolume(0);
         radio.setPrevVolume();
@@ -131,7 +131,7 @@ public class RadioTest {
 
     @Test
     public void switchNextVolumeMax() {    // 10. переключение громкости выше ста
-        Radio radio = new Radio(100);
+        Radio radio = new Radio(0,9);
 
         radio.setCurrentVolume(100);
         radio.setNextVolume();
@@ -171,7 +171,7 @@ public class RadioTest {
 
     @Test
     public void setCurrentVolumeLowerMin() {    // 13. проверка установки громкости ниже нуля
-        Radio radio = new Radio(-1);
+        Radio radio = new Radio(0,9);
 
         //radio.setCurrentVolume(50);
         radio.setCurrentVolume(-1);
@@ -184,13 +184,25 @@ public class RadioTest {
 
     @Test
     public void setCurrentVolumeGreaterMax() {    // 14. проверка установки громкости выше нуля
-        Radio radio = new Radio(101);
+        Radio radio = new Radio(0,9);
 
         //radio.setCurrentVolume(50);
         radio.setCurrentVolume(101);
 
         int expected = 0 ;
         int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void showCurrentStationAbove() {   // 15. показ текущей радиостанции c расширенным диапазоном
+        Radio radio = new Radio(30);
+
+        radio.setCurrentStation(15);
+
+        int expected = 15;
+        int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
     }
