@@ -1,4 +1,4 @@
- package ru.netology.radio;
+package ru.netology.radio;
 
 public class Main {
     public static void main(String[] args) {

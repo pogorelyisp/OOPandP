@@ -16,6 +16,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+
     @Test
     public void switchNextStation() {      // 2. переключение радиостанции вверх
 
@@ -174,7 +175,7 @@ public class RadioTest {
         //radio.setCurrentVolume(50);
         radio.setCurrentVolume(-1);
 
-        int expected = 0 ;
+        int expected = 0;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -187,11 +188,37 @@ public class RadioTest {
         //radio.setCurrentVolume(50);
         radio.setCurrentVolume(101);
 
-        int expected = 0 ;
+        int expected = 0;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
-}
 
+    @Test
+    public void showCurrentStationAbove() {   // 15. показ текущей радиостанции c расширенным диапазоном
+        Radio radio = new Radio(30);
+
+        radio.setCurrentStation(15);
+
+        int expected = 15;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void switchNextStationMaxAbove() {      //  16. переключение радиостанции больше максимального c расширенным диапазоном
+        Radio radio = new Radio(30);
+
+        radio.setCurrentStation(30);
+        radio.setNextStation();
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+}
 
